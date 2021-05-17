@@ -1,0 +1,10 @@
+<span *ngIf="!status_login; then page_login; else page_admin"></span>
+<ng-template #page_login>
+    <app-login-admin></app-login-admin>
+</ng-template>
+
+<ng-template #page_admin>
+    <router-outlet></router-outlet>
+</ng-template>
+
+<!-- <router-outlet></router-outlet> -->

@@ -1,0 +1,204 @@
+<div class="wrapper">
+    <app-menu-admin></app-menu-admin>
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand">{{ title }}</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a>
+                                <p>{{ CurrentNhanVien?.full_name }} | <span (click)="eventLogout()">Đăng xuất</span></p>
+                            </a>
+                        </li>
+                        <li class="separator hidden-lg hidden-md"></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- @*Phần sửa*@ -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <form class="title" onsubmit="return false;">
+                                    <p>
+                                        <select style="height: 30px;" name="type" [(ngModel)]="type">
+                                            <option value="all">Tất cả</option>
+                                            <option value="product_type_id">Tìm theo mã loại sản phẩm</option>
+                                            <option value="name">Tìm theo tên loại sản phẩm</option>
+                                            <option value="description">Tìm theo mô tả loại sản phẩm</option>
+                                        </select>
+                                        <input type="text" style="height: 30px;" name="input" [(ngModel)]="input"/>
+                                        <input type="button" value="Tìm kiếm" style="height: 30px;" (click)="eventTimKiem()"/>
+                                        <input type="button" value="Thêm loại sản phẩm" style="float: right;" (click)="load_Add_LSP()"/>
+                                    </p>
+                                </form>
+                            </div>
+                            <div class="content table-responsive table-full-width" id="id1">
+                                <table class="table table-hover table-striped">
+                                    <thead>
+                                    <th>Mã loại</th>
+                                    <th>Tên loại</th>
+                                    <th>Mô tả</th>
+                                    <th>Trạng thái</th>
+                                    <th *ngIf="tool">Hành động</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of ListLSP">
+                                            <td>{{item.product_type_id}}</td>
+                                            <td>{{item.name}}</td>
+                                            <td>{{item.description}}</td>
+
+                                            <span *ngIf="item.status == 1; then hien; else an;"></span>
+                                            <ng-template #hien> 
+                                                <td>Hiện</td>
+                                            </ng-template>
+                                            <ng-template #an> 
+                                                <td>Ẩn</td>
+                                            </ng-template>
+                                            
+                                            <td *ngIf="tool">
+                                                <!-- @*<i class="pe-7s-config"></i><i class="pe-7s-trash"></i>*@ -->
+                                                <button data-toggle="tooltip" title="" class="pd-setting-ed" data-original-title="Edit" data-toggle="modal" data-target="#myModal" (click)="load_Edit_LSP(item.product_type_id)"><i class="pe-7s-config"></i></button>
+                                                <!-- <button data-toggle="tooltip" title="" class="pd-setting-ed" data-original-title="Trash" onclick="RemoveLSP(item.product_type_id)"><i class="pe-7s-trash"></i></button> -->
+                                                <button *ngIf="item.status != 0" data-toggle="tooltip" title="" class="pd-setting-ed" data-original-title="Trash" (click)="Lock_LSP(item.product_type_id)"><i class="pe-7s-lock"></i></button>
+                                                <button *ngIf="item.status == 0" data-toggle="tooltip" title="" class="pd-setting-ed" data-original-title="Trash" (click)="UnLock_LSP(item.product_type_id)"><i class="pe-7s-unlock"></i></button>
+                                            </td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12" *ngIf="show_edit_lsp">
+                        <div class="card card-plain">
+                            <div class="header">
+                                <h4 class="title" id="id_cthd">Sửa thông tin loại sản phẩm</h4>
+                                <br>
+                                <input class="validation-error" type="button" value="Hủy" (click)="event_Huy_Sua()">
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <form [formGroup]="profileEdit" (submit)="submitSua()">
+                                    <table class="table table-hover">
+                                        <tbody>
+                                            <tr>
+                                                <td> Mã loại sản phẩm </td>
+                                                <td> <input type="text" name="product_type_id" formControlName="product_type_id" disabled> </td>
+                                                <td><span class="validation-error">{{getErrorProduct_type_id()}}</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td> Tên loại sản phẩm </td>
+                                                <td> <input type="text" name="name" formControlName="name"> </td>
+                                                <td><span class="validation-error">{{getErrorName()}}</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td> Mô tả </td>
+                                                <td> <textarea type="text" name="description" formControlName="description"> </textarea></td>
+                                                <td><span class="validation-error">{{getErrorDescription()}}</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td> Trạng thái </td>
+                                                <td> <input type="text" name="status" formControlName="status" disabled></td>
+                                                <td><span class="validation-error">{{getErrorStatus()}}</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3"> <input class="modal-header" [disabled]="!profileEdit.valid" type="submit" value="Sửa" style="width: 100%;"/> </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12" *ngIf="show_add_lsp">
+                        <div class="card card-plain">
+                            <div class="header">
+                                <h4 class="title" id="id_cthd">Thêm loại sản phẩm</h4>
+                                <br>
+                                <input class="validation-error" type="button" value="Hủy" (click)="event_Huy_Add()">
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <form [formGroup]="profileAdd" (submit)="submitAdd()">
+                                    <table class="table table-hover">
+                                        <tbody>
+                                            <tr>
+                                                <td> Mã loại sản phẩm </td>
+                                                <td> <input type="text" name="product_type_id" formControlName="product_type_id" disabled> </td>
+                                                <td><span class="validation-error">{{getErrorProduct_type_id_Add()}}</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td> Tên loại sản phẩm </td>
+                                                <td> <input type="text" name="name" formControlName="name"> </td>
+                                                <td><span class="validation-error">{{getErrorName_Add()}}</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td> Mô tả </td>
+                                                <td> <textarea type="text" name="description" formControlName="description"> </textarea></td>
+                                                <td><span class="validation-error">{{getErrorDescription_Add()}}</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3"> <input class="modal-header" [disabled]="!profileAdd.valid" type="submit" value="Thêm" style="width: 100%;"/> </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- @*Kết thúc phần sửa*@ -->
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Company
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Portfolio
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Blog
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <p class="copyright pull-right">
+                    &copy;
+                    <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+                </p>
+            </div>
+        </footer>
+
+
+    </div>
+</div>

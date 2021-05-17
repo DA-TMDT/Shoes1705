@@ -1,0 +1,301 @@
+<div class="wrapper">
+    <app-menu-admin></app-menu-admin>
+
+    <div class="main-panel">
+		<nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand">Thông tin cá nhân</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a>
+                                <p>{{CurrentNhanVien.full_name}} | <span (click)="eventLogout()">Đăng xuất</span></p>
+                            </a>
+                        </li>
+                        <li class="separator hidden-lg hidden-md"></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- @*Phần sửa*@ -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Sửa thông tin cá nhân</h4>
+                            </div>
+                            <div class="content">
+                                <form [formGroup]="profileFormNV" *ngIf="tool_sua == false">
+                                    <div asp-validation-summary="ModelOnly">
+                                        <!-- @* <span>Danh sách lỗi</span> *@ -->
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label>Tài khoản</label>
+                                                <input type="text" class="form-control background_white" placeholder="Tài khoản" name="user" formControlName="user" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Mật khẩu</label>
+                                                <input type="password" class="form-control background_white" placeholder="Mật khẩu" name="pass" formControlName="pass" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Nhập lại mật khẩu</label>
+                                                <input type="password" class="form-control background_white" placeholder="Nhập lại mật khẩu" name="repass" formControlName="repass" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Họ và tên</label>
+                                                <input type="text" class="form-control background_white" placeholder="Họ và tên" name="full_name" formControlName="full_name" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Số điện thoại</label>
+                                                <input type="text" class="form-control background_white" placeholder="Số điện thoại" name="phone" formControlName="phone" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Địa chỉ</label>
+                                                <input type="text" class="form-control background_white" disabled placeholder="Địa chỉ" name="address" formControlName="address">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Thư điện tử</label>
+                                                <input disabled type="text" class="form-control background_white" placeholder="Thư điện tử" name="mail" formControlName="mail">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Ngày sinh</label>
+                                                <input disabled type="date" class="form-control background_white" placeholder="Ngày sinh" name="dateborn" formControlName="dateborn">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Giới tính</label>
+                                                <br>
+                                                <select class="background_white" disabled name="sex" formControlName="sex">
+                                                    <option value="Nam">Nam</option>
+                                                    <option value="Nữ">Nữ</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Mã quyền</label>
+                                                <input type="text" class="form-control background_white" placeholder="Mã quyền" name="permission_id" formControlName="permission_id" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Trạng thái</label>
+                                                <input type="text" class="form-control background_white" placeholder="Trạng thái" name="status" formControlName="status" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button type="button" (click)="loadSua()" class="btn btn-info btn-fill pull-right">Sửa thông tin</button>
+                                    <div class="clearfix"></div>
+                                </form>
+
+                                <form [formGroup]="profileFormNV" *ngIf="tool_sua" (submit)="event_Luu_Sua()">
+                                    <div asp-validation-summary="ModelOnly">
+                                        <!-- @* <span>Danh sách lỗi</span> *@ -->
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label>Tài khoản</label>
+                                                <input type="text" class="form-control" placeholder="Tài khoản" name="user" formControlName="user" disabled>
+                                                <span class="validation-error">{{getErrorUser()}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Mật khẩu</label>
+                                                <input type="password" class="form-control" placeholder="Mật khẩu" name="pass" formControlName="pass">
+                                                <span class="validation-error">{{getErrorNewPass()}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Nhập lại mật khẩu</label>
+                                                <input type="password" class="form-control" placeholder="Nhập lại mật khẩu" name="repass" formControlName="repass">
+                                                <span class="validation-error">{{getErrorRepass()}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Họ và tên</label>
+                                                <input type="text" class="form-control" placeholder="Họ và tên" name="full_name" formControlName="full_name">
+                                                <span class="validation-error">{{getErrorFull_name()}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Số điện thoại</label>
+                                                <input type="text" class="form-control" placeholder="Số điện thoại" name="phone" formControlName="phone">
+                                                <span class="validation-error">{{getErrorPhone()}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Địa chỉ</label>
+                                                <input type="text" class="form-control" placeholder="Địa chỉ" name="address" formControlName="address">
+                                                <span class="validation-error">{{getErrorAddress()}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Thư điện tử</label>
+                                                <input type="text" class="form-control" placeholder="Thư điện tử" name="mail" formControlName="mail">
+                                                <span class="validation-error">{{getErrorMail()}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Ngày sinh</label>
+                                                <input type="date" class="form-control" placeholder="Ngày sinh" name="dateborn" formControlName="dateborn">
+                                                <span class="validation-error">{{getErrorDateBorn()}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Giới tính</label>
+                                                <br>
+                                                <select name="sex" formControlName="sex">
+                                                    <option value="Nam">Nam</option>
+                                                    <option value="Nữ">Nữ</option>
+                                                </select>
+                                                <span class="validation-error">{{getErrorSex()}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Mã quyền</label>
+                                                <input type="text" class="form-control" placeholder="Mã quyền" name="permission_id" formControlName="permission_id" disabled>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Trạng thái</label>
+                                                <input type="text" class="form-control" placeholder="Trạng thái" name="status" formControlName="status" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="button" (click)="event_huySua()" class="btn btn-info btn-fill pull-left background_red">Hủy</button>
+                                    <button type="submit" class="btn btn-info btn-fill pull-right">Lưu sửa</button>
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-user">
+                            <div class="image">
+                                <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..."/>
+                            </div>
+                            <div class="content">
+                                <div class="author">
+                                     <a >
+                                    <img class="avatar border-gray" src="/assets/img/faces/face-3.jpg" alt="..."/>
+
+                                      <h4 class="title">{{CurrentNhanVien?.full_name}}<br /></h4>
+                                    </a>
+                                </div>
+                                <p class="description text-center"> {{CurrentQ.name}} </p>
+                            </div>
+                            <hr>
+                            <div class="text-center">
+                                <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
+                                <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
+                                <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Company
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Portfolio
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                               Blog
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <p class="copyright pull-right">
+                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+                </p>
+            </div>
+        </footer>
+
+    </div>
+    
+</div>
