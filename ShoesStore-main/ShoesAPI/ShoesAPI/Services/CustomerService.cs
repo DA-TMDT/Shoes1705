@@ -5,30 +5,30 @@ using ShoesAPI.Mappings;
 
 namespace ShoesAPI.Services
 {
-    public class KhachHangService
+    public class CustomerService
     {
-        private readonly IKhachHangEFContext KHcontext;
-        public KhachHangService(IKhachHangEFContext KHcontext){
+        private readonly ICustomerEFContext KHcontext;
+        public CustomerService(ICustomerEFContext KHcontext){
             this.KHcontext = KHcontext;
         }
-        public IEnumerable<KhachHangDto> KhachHang_GetAll(){
+        public IEnumerable<CustomerDto> KhachHang_GetAll(){
             var khs = KHcontext.KhachHang_GetAll();
-            return khs.MappingKhachHangDtos();
+            return khs.MappingCustomerDtos();
         }
-        public KhachHangDto KhachHang_GetByUser(string user){
+        public CustomerDto KhachHang_GetByUser(string user){
             var kh = KHcontext.KhachHang_GetByUser(user);
             if(kh == null) return null;
-            return kh.MappingKhachHangDto();
+            return kh.MappingCustomerDto();
         }
-        public void KhachHang_Add(KhachHangDto U){
-            var kh = U.MappingKhachHang();
+        public void KhachHang_Add(CustomerDto U){
+            var kh = U.MappingCustomer();
             KHcontext.KhachHang_Add(kh);
         }
 
-        public void KhachHang_Update(KhachHangDto U){
+        public void KhachHang_Update(CustomerDto U){
             var kh = KHcontext.KhachHang_GetByUser(U.user);
             if(kh == null) return;
-            U.MappingKhachHang(kh);
+            U.MappingCustomer(kh);
             KHcontext.KhachHang_Update(kh);
         }
 
@@ -37,8 +37,8 @@ namespace ShoesAPI.Services
             if(kh == null) return;
             KHcontext.KhachHang_Remove(kh);
         }
-        public IEnumerable<KhachHangDto> KhachHang_AdminTimKiem(string type, string input){
-            return KHcontext.KhachHang_AdminTimKiem(type, input).MappingKhachHangDtos();
+        public IEnumerable<CustomerDto> KhachHang_AdminTimKiem(string type, string input){
+            return KHcontext.KhachHang_AdminTimKiem(type, input).MappingCustomerDtos();
         }
     }
 }

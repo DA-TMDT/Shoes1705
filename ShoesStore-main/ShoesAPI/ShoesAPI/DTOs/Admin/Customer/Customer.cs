@@ -1,6 +1,6 @@
-namespace ShoesAPI.DTOs.Admin.KhachHang
+namespace ShoesAPI.DTOs.Admin.Customer
 {
-    public class KhachHang_SearchDto
+    public class Customer_SearchDto
     {
         public string type { get; set; }
         public string input { get; set; }

@@ -2,33 +2,33 @@ using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using ShoesAPI.DTOs;
-using ShoesAPI.DTOs.Admin.KhachHang;
+using ShoesAPI.DTOs.Admin.Customer;
 using ShoesAPI.Services;
 
 namespace ShoesAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class KhachHangController : ControllerBase
+    public class CustomerController : ControllerBase
     {
-        private readonly KhachHangService KHservice;
-        public KhachHangController(KhachHangService KHservice){
+        private readonly CustomerService KHservice;
+        public CustomerController(CustomerService KHservice){
             this.KHservice = KHservice;
         }
         [HttpGet]
-        public IEnumerable<KhachHangDto> GetKHDtos()
+        public IEnumerable<CustomerDto> GetKHDtos()
         {
             return KHservice.KhachHang_GetAll();
         }
 
         [HttpGet("{user}")]
-        public KhachHangDto GetKHDto(string user)
+        public CustomerDto GetKHDto(string user)
         {
             return KHservice.KhachHang_GetByUser(user);
         }
 
         [HttpPost]
-        public ActionResult<KhachHangDto> AddKHDto(KhachHangDto p)
+        public ActionResult<CustomerDto> AddKHDto(CustomerDto p)
         {
             KHservice.KhachHang_Add(p);
 
@@ -36,7 +36,7 @@ namespace ShoesAPI.Controllers
         }
 
         [HttpPut]
-        public void UpdateKHDto([FromBody] KhachHangDto p)
+        public void UpdateKHDto([FromBody] CustomerDto p)
         {
             KHservice.KhachHang_Update(p);
         }
@@ -49,7 +49,7 @@ namespace ShoesAPI.Controllers
 
         // Các phần cho các trang đặc biệt
         [HttpPost("register")]
-        public ActionResult<KhachHangDto> AddKHDto_Register(KhachHangDto p)
+        public ActionResult<CustomerDto> AddKHDto_Register(CustomerDto p)
         {
             KHservice.KhachHang_Add(p);
 
@@ -68,7 +68,7 @@ namespace ShoesAPI.Controllers
         [HttpPost("login")]
         public ActionResult<TaiKhoanDto> Login(TaiKhoanDto p)
         {
-            KhachHangDto kh = KHservice.KhachHang_GetByUser(p.user);
+            CustomerDto kh = KHservice.KhachHang_GetByUser(p.user);
             if(kh == null) {
                 return null;
             }
@@ -89,7 +89,7 @@ namespace ShoesAPI.Controllers
 
         // Tìm kiếm bên admin khách hàng
         [HttpPost("manager_khsearch")]
-        public IEnumerable<KhachHangDto> TimKiem(KhachHang_SearchDto q){
+        public IEnumerable<CustomerDto> TimKiem(Customer_SearchDto q){
             if(String.IsNullOrEmpty(q.input)){
                 q.input = "";
             }

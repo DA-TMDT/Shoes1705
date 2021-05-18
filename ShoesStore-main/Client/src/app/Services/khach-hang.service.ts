@@ -5,8 +5,8 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class KhachHangService {
-  url = `${environment.apiUrl}khachhang/`;
+export class CustomerService {
+  url = `${environment.apiUrl}customer/`;
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',

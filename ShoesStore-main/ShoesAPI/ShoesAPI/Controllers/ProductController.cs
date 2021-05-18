@@ -11,40 +11,40 @@ namespace ShoesAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SanPhamController : ControllerBase
+    public class ProductController : ControllerBase
     {
-        private readonly SanPhamService sanPhamService;
+        private readonly ProductService ProductService;
         private readonly LoaiSanPhamService LSPService;
-        public SanPhamController(SanPhamService sanPhamService, LoaiSanPhamService LSPService) {
-            this.sanPhamService = sanPhamService;
+        public ProductController(ProductService ProductService, LoaiSanPhamService LSPService) {
+            this.ProductService = ProductService;
             this.LSPService = LSPService;
         }
 
         [HttpGet]
-        public IEnumerable<SanPhamDto> GetSPDtos() {
-            return this.sanPhamService.SanPham_GetAll();
+        public IEnumerable<ProductDto> GetSPDtos() {
+            return this.ProductService.SanPham_GetAll();
         }
 
         [HttpGet("{id}")]
-        public SanPhamDto GetSPDto(int id) {
-            return this.sanPhamService.SanPham_GetById(id);
+        public ProductDto GetSPDto(int id) {
+            return this.ProductService.SanPham_GetById(id);
         }
 
         [HttpPost]
-        public ActionResult<SanPhamDto> AddSPDto(SanPhamDto SP) {
-            this.sanPhamService.SanPham_Add(SP);
+        public ActionResult<ProductDto> AddSPDto(ProductDto SP) {
+            this.ProductService.SanPham_Add(SP);
 
             return CreatedAtAction(nameof(GetSPDto), new { id = SP.product_id }, SP);
         }
 
         [HttpPut]
-        public void UpdateSPDto([FromBody] SanPhamDto SP) {
-            sanPhamService.SanPham_Update(SP);
+        public void UpdateSPDto([FromBody] ProductDto SP) {
+            ProductService.SanPham_Update(SP);
         }
 
         [HttpDelete("{id}")]
         public void DeleteSPDto(int id) {
-            sanPhamService.SanPham_Remove(id);
+            ProductService.SanPham_Remove(id);
         }
 
         // =============================== Shop ==============================
@@ -62,8 +62,8 @@ namespace ShoesAPI.Controllers
                 NameType = null;
             }
 
-            var SanPhams = sanPhamService.SanPham_Filter(data.Type, data.qSearch, data.price, data.sort, data.pageIndex, Constants.pageSize, out count, out pricemax);
-            var ListSP = new PaginatedList<SanPhamDto>(SanPhams, count, data.pageIndex, Constants.pageSize);
+            var Products = ProductService.SanPham_Filter(data.Type, data.qSearch, data.price, data.sort, data.pageIndex, Constants.pageSize, out count, out pricemax);
+            var ListSP = new PaginatedList<ProductDto>(Products, count, data.pageIndex, Constants.pageSize);
             // Console.WriteLine(ListSP.TotalPages);
             var indexVSM = new IndexViewShopModel()
             {
@@ -85,29 +85,29 @@ namespace ShoesAPI.Controllers
 
         // ============================== Index ========================
         [HttpGet("home-spbanchay")]
-        public IEnumerable<SanPhamDto> SPBanChay() {
-            return this.sanPhamService.TenSPChay();
+        public IEnumerable<ProductDto> SPBanChay() {
+            return this.ProductService.TenSPChay();
         }
 
         [HttpGet("home-sphot")]
-        public IEnumerable<SanPhamDto> SPHot() {
-            return this.sanPhamService.TenSPNoi();
+        public IEnumerable<ProductDto> SPHot() {
+            return this.ProductService.TenSPNoi();
         }
 
         // ============================== Admin - SanPham ================================
         // Tìm kiếm bên admin sản phẩm
         [HttpPost("manager_spsearch")]
-        public IEnumerable<SanPhamDto> TimKiem(SP_SearchDto q){
+        public IEnumerable<ProductDto> TimKiem(SP_SearchDto q){
             if(String.IsNullOrEmpty(q.input)){
                 q.input = "";
             }
-            return sanPhamService.SanPhams_AdminTimKiem(q.type, q.input);
+            return ProductService.SanPhams_AdminTimKiem(q.type, q.input);
         }
 
         // Khóa trạng thái danh sách sản phẩm theo product_type_id
         [HttpPost("lock_listsp")]
         public void Lock_ListSP(SP_LSP_Status p) {
-            this.sanPhamService.SanPham_Update_Status_By_Product_type_id(p.product_type_id, p.status);
+            this.ProductService.SanPham_Update_Status_By_Product_type_id(p.product_type_id, p.status);
         }
     }
 }

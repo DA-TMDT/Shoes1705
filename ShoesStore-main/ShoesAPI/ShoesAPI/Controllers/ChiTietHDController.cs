@@ -12,8 +12,8 @@ namespace ShoesAPI.Controllers
     public class ChiTietHDController : ControllerBase
     {
         private readonly ChiTietHDService CTHDservice;
-        private readonly SanPhamService SPService;
-        public ChiTietHDController(ChiTietHDService CTHDservice, SanPhamService SPService)
+        private readonly ProductService SPService;
+        public ChiTietHDController(ChiTietHDService CTHDservice, ProductService SPService)
         {
             this.CTHDservice = CTHDservice;
             this.SPService = SPService;

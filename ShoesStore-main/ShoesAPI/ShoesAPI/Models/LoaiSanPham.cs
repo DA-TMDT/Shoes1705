@@ -16,10 +16,10 @@ namespace ShoesAPI.Models
 
         public int status {get; set;}
 
-        public ICollection<SanPham> SanPhams {get; set;}
+        public ICollection<Product> SanPhams {get; set;}
 
         public LoaiSanPham(){
-            this.SanPhams = new HashSet<SanPham>();
+            this.SanPhams = new HashSet<Product>();
         }
     }
 }

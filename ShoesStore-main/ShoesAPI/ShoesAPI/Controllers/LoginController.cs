@@ -11,8 +11,8 @@ namespace ShoesAPI.Controllers
     [ApiController]
     public class LoginController : ControllerBase
     {
-        private readonly KhachHangService KHservice;
-        public LoginController(KhachHangService KHservice){
+        private readonly CustomerService KHservice;
+        public LoginController(CustomerService KHservice){
             this.KHservice = KHservice;
         }
 
@@ -23,7 +23,7 @@ namespace ShoesAPI.Controllers
         }
         
         [HttpGet("{user}")]
-        public KhachHangDto GetKhachHangDto(string user)
+        public CustomerDto GetKhachHangDto(string user)
         {
             return KHservice.KhachHang_GetByUser(user);
         }
@@ -31,7 +31,7 @@ namespace ShoesAPI.Controllers
         [HttpPost]
         public ActionResult<TaiKhoanDto> Login(TaiKhoanDto p)
         {
-            KhachHangDto kh = KHservice.KhachHang_GetByUser(p.user);
+            CustomerDto kh = KHservice.KhachHang_GetByUser(p.user);
             if(kh == null) {
                 return null;
             }

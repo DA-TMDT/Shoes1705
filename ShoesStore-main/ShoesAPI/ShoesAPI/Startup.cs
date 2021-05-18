@@ -43,15 +43,15 @@ namespace ShoesAPI
             services.AddControllers();
 
             // Thiện
-            services.AddDbContext<PhoneStoreDBContext>(options =>
+            services.AddDbContext<ShoesStoreDBContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("Default")));
 
-            services.AddScoped<IKhachHangEFContext, KhachHangEFContext>();
-            services.AddScoped<KhachHangService>();
+            services.AddScoped<ICustomerEFContext, CustomerEFContext>();
+            services.AddScoped<CustomerService>();
             services.AddScoped<ILoaiSanPhamEFContext, LoaiSanPhamEFContext>();
             services.AddScoped<LoaiSanPhamService>();
-            services.AddScoped<ISanPhamEFContext, SanPhamEFContext>();
-            services.AddScoped<SanPhamService>();
+            services.AddScoped<IProductEFContext, ProductEFContext>();
+            services.AddScoped<ProductService>();
             services.AddScoped<IQuyenEFContext, QuyenEFContext>();
             services.AddScoped<QuyenService>();
             services.AddScoped<IHoaDonEFContext, HoaDonEFContext>();

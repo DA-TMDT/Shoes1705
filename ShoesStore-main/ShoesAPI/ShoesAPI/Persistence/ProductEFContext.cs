@@ -7,69 +7,69 @@ using ShoesAPI.Models;
 
 namespace ShoesAPI.Persistence
 {
-    public class SanPhamEFContext : ISanPhamEFContext
+    public class ProductEFContext : IProductEFContext
     {
-        private readonly PhoneStoreDBContext context;
-        public SanPhamEFContext(PhoneStoreDBContext context){
+        private readonly ShoesStoreDBContext context;
+        public ProductEFContext(ShoesStoreDBContext context){
             this.context = context;
         }
-        public void SanPham_Add(SanPham SP)
+        public void SanPham_Add(Product SP)
         {
-            context.SanPhams.Add(SP);
+            context.Products.Add(SP);
             context.SaveChanges();
         }
 
-        public IEnumerable<SanPham> SanPham_GetAll()
+        public IEnumerable<Product> SanPham_GetAll()
         {
-            return context.SanPhams.ToList();
+            return context.Products.ToList();
         }
 
-        public SanPham SanPham_GetById(int id)
+        public Product SanPham_GetById(int id)
         {
-            return context.SanPhams.Find(id);
+            return context.Products.Find(id);
         }
 
-        public void SanPham_Remove(SanPham SP)
+        public void SanPham_Remove(Product SP)
         {
-            context.SanPhams.Remove(SP);
+            context.Products.Remove(SP);
             context.SaveChanges();
         }
 
         public void SanPham_RemoveBy_Product_Type_Id(int product_type_id)
         {
-            var query = context.SanPhams.AsQueryable();
+            var query = context.Products.AsQueryable();
             query = query.Where(m => m.product_type_id == product_type_id);
-            context.SanPhams.RemoveRange(query.ToList());
+            context.Products.RemoveRange(query.ToList());
             context.SaveChanges();
         }
 
-        public IEnumerable<SanPham> SanPham_Shop_GetAll()
+        public IEnumerable<Product> SanPham_Shop_GetAll()
         {
-            var query = context.SanPhams.AsQueryable();
+            var query = context.Products.AsQueryable();
             query = query.Where(m => m.status == 1);
             return query.ToList();
         }
 
-        public void SanPham_Update(SanPham SP)
+        public void SanPham_Update(Product SP)
         {
-            context.SanPhams.Update(SP);
+            context.Products.Update(SP);
             context.SaveChanges();
         }
 
         public void SanPham_Update_Status_By_Product_type_id(int product_type_id, int status)
         {
-            var query = context.SanPhams.AsQueryable();
+            var query = context.Products.AsQueryable();
             query = query.Where(m => m.product_type_id == product_type_id);
             foreach (var item in query.ToList())
             {
                 item.status = status;
             }
-            context.SanPhams.UpdateRange(query.ToList());
+            context.Products.UpdateRange(query.ToList());
             context.SaveChanges();
         }
 
-        public IEnumerable<SanPham> SanPham_Filter(string Type, string qSearch, string price, string sort, int pageIndex, int pageSize, out int count, out decimal pricemax) {
-            var query = context.SanPhams.AsQueryable();
+        public IEnumerable<Product> SanPham_Filter(string Type, string qSearch, string price, string sort, int pageIndex, int pageSize, out int count, out decimal pricemax) {
+            var query = context.Products.AsQueryable();
 
             // Lấy dữ liệu loại sản phẩm
             if(!string.IsNullOrEmpty(Type)) {
@@ -145,7 +145,7 @@ namespace ShoesAPI.Persistence
         }
 
         public decimal SanPham_MaxPrice(){
-            IEnumerable<SanPham> ListSP = SanPham_GetAll();
+            IEnumerable<Product> ListSP = SanPham_GetAll();
             decimal maxprice = 0;
             foreach(var q in ListSP){
                 if(maxprice <= q.price){
@@ -155,8 +155,8 @@ namespace ShoesAPI.Persistence
             return maxprice;
         }
 
-        public IEnumerable<SanPham> SanPham_ListCart(string list) {
-            var query = context.SanPhams.AsQueryable();
+        public IEnumerable<Product> SanPham_ListCart(string list) {
+            var query = context.Products.AsQueryable();
             if(!string.IsNullOrEmpty(list)) {
                 List<int> listProduct_id = new List<int>();
                 List<int> listSoluong = new List<int>();
@@ -196,8 +196,8 @@ namespace ShoesAPI.Persistence
 
             return query.ToList();
         }
-        public IEnumerable<SanPham> TenSPChay(){
-            var query = context.SanPhams.AsQueryable();
+        public IEnumerable<Product> TenSPChay(){
+            var query = context.Products.AsQueryable();
             int pageIndex = 1;
             int pageSize = 10;
             query = query.OrderBy(m => m.amount);
@@ -205,8 +205,8 @@ namespace ShoesAPI.Persistence
                         .Take(pageSize).ToList();
         }
 
-        public IEnumerable<SanPham> TenSPNoi(){
-            var query = context.SanPhams.AsQueryable();
+        public IEnumerable<Product> TenSPNoi(){
+            var query = context.Products.AsQueryable();
             int pageIndex = 1;
             int pageSize = 10;
             query = query.OrderBy(m => (int?)m.price);
@@ -214,8 +214,8 @@ namespace ShoesAPI.Persistence
                         .Take(pageSize).ToList();
         }
 
-        public IEnumerable<SanPham> SanPhams_AdminTimKiem(string type, string input){
-            var query = context.SanPhams.AsQueryable();
+        public IEnumerable<Product> SanPhams_AdminTimKiem(string type, string input){
+            var query = context.Products.AsQueryable();
             switch(type){
                 case "all": {
                     input = input.Trim().ToLower();
@@ -238,7 +238,7 @@ namespace ShoesAPI.Persistence
                         query = query.Where(m => m.product_id == ip);
                     }
                     else{
-                        return new List<SanPham>();
+                        return new List<Product>();
                     }
                     break;
                 }
@@ -253,7 +253,7 @@ namespace ShoesAPI.Persistence
                         query = query.Where(m => m.product_type_id == ip);
                     }
                     else{
-                        return new List<SanPham>();
+                        return new List<Product>();
                     }
                     break;
                 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { KhachHangService } from 'src/app/Services/khach-hang.service';
+import { CustomerService } from 'src/app/Services/khach-hang.service';
 import { QuyenService } from 'src/app/Services/quyen.service';
 import Swal from 'sweetalert2';
 
@@ -25,7 +25,7 @@ export class KhachHangAdminComponent implements OnInit {
   public show_edit_user = false;
   public profileUserForm;
 
-  constructor(private QService : QuyenService, private KHService : KhachHangService) { }
+  constructor(private QService : QuyenService, private KHService : CustomerService) { }
 
   ngOnInit(): void {
     this.CurrentNhanVien = JSON.parse(sessionStorage.getItem("CurrentNhanVien"));

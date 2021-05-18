@@ -6,8 +6,8 @@ namespace ShoesAPI.Mappings
 {
     public static class MappingSanPhamProfile
     {
-        public static SanPhamDto MappingSanPhamDto(this SanPham sp){
-            return new SanPhamDto{
+        public static ProductDto MappingSanPhamDto(this Product sp){
+            return new ProductDto{
                 product_id = sp.product_id,
                 product_type_id = sp.product_type_id,
                 name = sp.name,
@@ -20,8 +20,8 @@ namespace ShoesAPI.Mappings
             };
         }
 
-        public static SanPham MappingSanPham(this SanPhamDto spdto){
-            return new SanPham{
+        public static Product MappingSanPham(this ProductDto spdto){
+            return new Product{
                 product_id = spdto.product_id,
                 product_type_id = spdto.product_type_id,
                 name = spdto.name,
@@ -34,7 +34,7 @@ namespace ShoesAPI.Mappings
             };
         }
 
-        public static void MappingSanPham(this SanPhamDto spdto, SanPham sp){
+        public static void MappingSanPham(this ProductDto spdto, Product sp){
             // sp.product_id = spdto.product_id;
             sp.product_type_id = spdto.product_type_id;
             sp.name = spdto.name;
@@ -45,13 +45,13 @@ namespace ShoesAPI.Mappings
             sp.status = spdto.status;
         }
 
-        public static IEnumerable<SanPhamDto> MappingSanPhamDtos(this IEnumerable<SanPham> sps){
+        public static IEnumerable<ProductDto> MappingSanPhamDtos(this IEnumerable<Product> sps){
             foreach(var sp in sps){
                 yield return sp.MappingSanPhamDto();
             }
         }
 
-        public static IEnumerable<SanPham> MappingSanPhams(this IEnumerable<SanPhamDto> spdtos)
+        public static IEnumerable<Product> MappingSanPhams(this IEnumerable<ProductDto> spdtos)
         {
             foreach (var sp in spdtos)
             {

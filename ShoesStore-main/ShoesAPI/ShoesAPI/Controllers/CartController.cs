@@ -10,13 +10,13 @@ namespace ShoesAPI.Controllers
     [ApiController]
     public class CartController : ControllerBase
     {
-        private readonly SanPhamService SPService; 
-        public CartController(SanPhamService SPService) {
+        private readonly ProductService SPService; 
+        public CartController(ProductService SPService) {
             this.SPService = SPService;
         }
 
         [HttpGet("{DonHang}")]
-        public IEnumerable<SanPhamDto> LoadSPForCart(string DonHang) {
+        public IEnumerable<ProductDto> LoadSPForCart(string DonHang) {
             var sps = SPService.SanPham_ListCart(DonHang);
             return sps;
         }

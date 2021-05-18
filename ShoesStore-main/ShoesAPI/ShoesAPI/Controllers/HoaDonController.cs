@@ -14,8 +14,8 @@ namespace ShoesAPI.Controllers
     {
         private readonly HoaDonService HDservice;
         private readonly ChiTietHDService CTHDservice;
-        private readonly SanPhamService SPService;
-        public HoaDonController(HoaDonService HDservice, ChiTietHDService CTHDservice, SanPhamService SPService)
+        private readonly ProductService SPService;
+        public HoaDonController(HoaDonService HDservice, ChiTietHDService CTHDservice, ProductService SPService)
         {
             this.HDservice = HDservice;
             this.CTHDservice = CTHDservice;

@@ -7,8 +7,8 @@ namespace ShoesAPI.Persistence
 {
     public class NhanVienEFContext : INhanVienEFContext
     {
-        private readonly PhoneStoreDBContext context;
-        public NhanVienEFContext(PhoneStoreDBContext context) {
+        private readonly ShoesStoreDBContext context;
+        public NhanVienEFContext(ShoesStoreDBContext context) {
             this.context = context;
         }
         public void NhanVien_Add(NhanVien NV)

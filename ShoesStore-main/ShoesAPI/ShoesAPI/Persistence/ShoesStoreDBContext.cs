@@ -3,12 +3,12 @@ using ShoesAPI.Models;
 
 namespace ShoesAPI.Persistence
 {
-    public class PhoneStoreDBContext : DbContext
+    public class ShoesStoreDBContext : DbContext
     {
-        public PhoneStoreDBContext(DbContextOptions<PhoneStoreDBContext> options) : base(options) {}
+        public ShoesStoreDBContext(DbContextOptions<ShoesStoreDBContext> options) : base(options) {}
 
-        public DbSet<KhachHang> KhachHangs { get; set; }
-        public DbSet<SanPham> SanPhams { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Product> Products { get; set; }
         public DbSet<LoaiSanPham> LoaiSanPhams { get; set; }
         public DbSet<HoaDon> HoaDons{get;set;}
         public DbSet<ChiTietHD> ChiTietHDs{get;set;}

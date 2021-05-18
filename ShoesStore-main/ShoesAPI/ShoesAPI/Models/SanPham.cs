@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ShoesAPI.Models
 {
-    public class SanPham
+    public class Product
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -24,7 +24,7 @@ namespace ShoesAPI.Models
 
         public virtual LoaiSanPham loaisanpham {get; set;}
 
-        public SanPham(){
+        public Product(){
             amount = 0;
             status = 1;
         }

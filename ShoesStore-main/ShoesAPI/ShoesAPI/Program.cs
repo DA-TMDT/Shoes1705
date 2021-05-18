@@ -19,7 +19,7 @@ namespace ShoesAPI
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
-                var context = services.GetRequiredService<PhoneStoreDBContext>();
+                var context = services.GetRequiredService<ShoesStoreDBContext>();
                 SeedData.Initialize(context);
             }
             host.Run();

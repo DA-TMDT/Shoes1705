@@ -5,37 +5,37 @@ using ShoesAPI.Models;
 
 namespace ShoesAPI.Persistence
 {
-    public class KhachHangEFContext : IKhachHangEFContext
+    public class CustomerEFContext : ICustomerEFContext
     {
-        private readonly PhoneStoreDBContext context;
-        public KhachHangEFContext(PhoneStoreDBContext context){
+        private readonly ShoesStoreDBContext context;
+        public CustomerEFContext(ShoesStoreDBContext context){
             this.context = context;
         }
-        public List<KhachHang> KhachHang_GetAll(){
-            return context.KhachHangs.ToList();
+        public List<Customer> KhachHang_GetAll(){
+            return context.Customers.ToList();
         }
 
-        public KhachHang KhachHang_GetByUser(string user){
-            return context.KhachHangs.Find(user);
+        public Customer KhachHang_GetByUser(string user){
+            return context.Customers.Find(user);
         }
 
-        public void KhachHang_Add(KhachHang U){
-            context.KhachHangs.Add(U);
+        public void KhachHang_Add(Customer U){
+            context.Customers.Add(U);
             context.SaveChanges();
         }
 
-        public void KhachHang_Update(KhachHang U){
-            context.KhachHangs.Update(U);
+        public void KhachHang_Update(Customer U){
+            context.Customers.Update(U);
             context.SaveChanges();
         }
 
-        public void KhachHang_Remove(KhachHang U){
-            context.KhachHangs.Remove(U);
+        public void KhachHang_Remove(Customer U){
+            context.Customers.Remove(U);
             context.SaveChanges();
         }
 
-        public IEnumerable<KhachHang> KhachHang_AdminTimKiem(string type, string input){
-            var query = context.KhachHangs.AsQueryable();
+        public IEnumerable<Customer> KhachHang_AdminTimKiem(string type, string input){
+            var query = context.Customers.AsQueryable();
             switch(type){
                 case "all": {
                     input = input.Trim().ToLower();

@@ -32,7 +32,24 @@ export class DefaultComponent implements OnInit {
     this.LSPService.getLSPs().subscribe(data => {
       this.Danhmuc = data;
     });
-
+    
+    // // Load Danh muc
+    // this.LSPService.getLSPs().subscribe(data => {
+    //   if(data) {
+    //     this.Danhmuc = data;
+    //   }
+    //   else {
+    //     Swal.fire({
+    //       type : "error",
+    //       title : "Lỗi load danh mục 1"
+    //     })
+    //   }
+    // }, error => {
+    //   Swal.fire({
+    //     type : "error",
+    //     title : "Lỗi load danh mục 2"
+    //   })
+    // });
     this.route.queryParams.subscribe(params => {
       this.qSearch = params['qSearch'];
     });

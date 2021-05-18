@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/Services/cart.service';
 import { ChiTietHoaDonService } from 'src/app/Services/chi-tiet-hoa-don.service';
 import { HoaDonService } from 'src/app/Services/hoa-don.service';
-import { KhachHangService } from 'src/app/Services/khach-hang.service';
+import { CustomerService } from 'src/app/Services/khach-hang.service';
 import Swal from 'sweetalert2';
 import { DefaultComponent } from '../_shared/default/default.component';
 
@@ -20,7 +20,7 @@ export class CartComponent implements OnInit {
   public address_thanhtoan = "";
 
   constructor(private httpCart : CartService, private defaultCome : DefaultComponent,
-    private httpHD : HoaDonService, private httpKH : KhachHangService, private httpCTHD : ChiTietHoaDonService) { }
+    private httpHD : HoaDonService, private httpKH : CustomerService, private httpCTHD : ChiTietHoaDonService) { }
 
   ngOnInit(): void {
     this.LoadSPforCart();
@@ -214,11 +214,11 @@ export class CartComponent implements OnInit {
               this.httpCTHD.AddCTHDRange(cthd).subscribe(data => {
                 Swal.fire({
                   type : "success",
-                  title : "Thanh toán thành công!!!"
+                  title : "Thanh toán thành công!!!"                
                 }).then(result => {
                   DonHang = "";
                   localStorage.removeItem("DonHang");
-                  this.LoadSPforCart();
+                  location.reload();
                 });
               }, error => {
                 Swal.fire({

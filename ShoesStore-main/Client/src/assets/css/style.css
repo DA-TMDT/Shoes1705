@@ -426,7 +426,10 @@ ol {
 
 .inner-header .advanced-search {
 	height: 50px;
+    /*Thiện
 	border: 1px solid #ebebeb;
+        */
+    border: 1px solid #000000;/*Chi*/
 }
 
 .inner-header .advanced-search .category-btn {
@@ -449,7 +452,10 @@ ol {
 	top: 14px;
 	width: 1px;
 	height: 20px;
+    /*Thiện
 	background: #e5e5e5;
+        */
+    background: #000000;/*Chi*/
 	content: "";
 }
 
@@ -460,7 +466,10 @@ ol {
 	content: "3";
 	font-family: "ElegantIcons";
 	font-size: 16px;
+    /*Thiện
 	color: #b2b2b2;
+        */
+    color: #000000;/*Chi*/
 }
 
 .inner-header .advanced-search .input-group {
@@ -503,11 +512,14 @@ ol {
 	margin-left: 15px;
 }
 
-.inner-header .nav-right li.heart-icon a {
+  .inner-header .nav-right li.heart-icon a {
+    /*Thiện
 	color: #252525;
-	position: relative;
-	display: inline-block;
-}
+        */
+    color: #683ab7; /*Chi*/
+    position: relative;
+    display: inline-block;
+  }
 
 .inner-header .nav-right li.heart-icon a span {
 	position: absolute;
@@ -534,11 +546,14 @@ ol {
 	top: 60px;
 }
 
-.inner-header .nav-right li.cart-icon a {
+  .inner-header .nav-right li.cart-icon a {
+    /*Thiện
 	color: #252525;
-	position: relative;
-	display: inline-block;
-}
+        */
+    color: #673ab7;/*Chi*/
+    position: relative;
+    display: inline-block;
+  }
 
 .inner-header .nav-right li.cart-icon a span {
 	position: absolute;
@@ -599,11 +614,14 @@ ol {
 	color: #232530;
 }
 
-.inner-header .nav-right li.cart-icon .cart-hover .select-items table tr td.si-close {
+  .inner-header .nav-right li.cart-icon .cart-hover .select-items table tr td.si-close {
+    /*Thiện
 	color: #252525;
-	font-size: 16px;
-	cursor: pointer;
-}
+        */
+    color: #673ab7;/*Chi*/
+    font-size: 16px;
+    cursor: pointer;
+  }
 
 .inner-header .nav-right li.cart-icon .cart-hover .select-total {
 	overflow: hidden;
@@ -625,16 +643,22 @@ ol {
 	float: right;
 }
 
-.inner-header .nav-right li.cart-icon .cart-hover .select-button .view-card {
-	font-size: 12px;
-	letter-spacing: 2px;
-	display: block;
-	text-align: center;
+  .inner-header .nav-right li.cart-icon .cart-hover .select-button .view-card {
+    font-size: 12px;
+    letter-spacing: 2px;
+    display: block;
+    text-align: center;
+    /*Thiện
 	background: #191919;
 	color: #ffffff;
-	padding: 15px 30px 12px;
-	margin-bottom: 10px;
-}
+        */
+    /*Chi*/
+    background: #683ab7;
+    color: #000000;
+    /*end Chi*/
+    padding: 15px 30px 12px;
+    margin-bottom: 10px;
+  }
 
 .inner-header .nav-right li.cart-icon .cart-hover .select-button .checkout-btn {
 	font-size: 12px;
@@ -652,23 +676,29 @@ ol {
 }
 
 .nav-item {
-	background: #252525;
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
+  /*Thiện
+        background: #252525;
+        */
+  background: #683ab7;/*Chi*/
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .nav-item .nav-depart {
 	float: left;
 }
 
-.nav-item .nav-depart .depart-btn {
-	background: #3b3b3b;
-	color: #ffffff;
-	padding: 14px 84px 14px 18px;
-	cursor: pointer;
-	position: relative;
-}
+  .nav-item .nav-depart .depart-btn {
+    /*Thiện
+    background: #3b3b3b;
+        */
+    background: #683ab7;/*Chi*/
+    color: #ffffff;
+    padding: 14px 84px 14px 18px;
+    cursor: pointer;
+    position: relative;
+  }
 
 .nav-item .nav-depart .depart-btn:hover .depart-hover {
 	top: 52px;
@@ -723,17 +753,20 @@ ol {
 	color: #e7ab3c;
 }
 
-.nav-item .nav-depart .depart-btn .depart-hover li a {
-	display: block;
-	font-size: 16px;
+  .nav-item .nav-depart .depart-btn .depart-hover li a {
+    display: block;
+    font-size: 16px;
+    /*Thiện
 	color: #000000;
-	padding-left: 40px;
-	padding-top: 16px;
-	padding-right: 30px;
-	-webkit-transition: all 0.3s;
-	-o-transition: all 0.3s;
-	transition: all 0.3s;
-}
+        */
+    color: #683ab7;/*Chi*/
+    padding-left: 40px;
+    padding-top: 16px;
+    padding-right: 30px;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+  }
 
 .nav-item .nav-depart .depart-btn .depart-hover li a:hover {
 	color: #e7ab3c;
@@ -757,18 +790,21 @@ ol {
 	background: #e7ab3c;
 }
 
-.nav-item .nav-menu li a {
-	font-size: 14px;
-	font-weight: 700;
-	display: block;
-	color: #ffffff;
+  .nav-item .nav-menu li a {
+    font-size: 14px;
+    font-weight: 700;
+    display: block;
+    color: #ffffff;
+    /*Thiện
 	border-right: 2px solid #3b3b3b;
-	text-transform: uppercase;
-	padding: 16px 42px 15px;
-	-webkit-transition: all 0.3s;
-	-o-transition: all 0.3s;
-	transition: all 0.3s;
-}
+        */
+    border-right: 2px solid #683ab7;/*Chi*/
+    text-transform: uppercase;
+    padding: 16px 42px 15px;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+  }
 
 .nav-item .nav-menu li:hover>a {
 	background: #e7ab3c;
@@ -780,19 +816,22 @@ ol {
 	top: 52px;
 }
 
-.nav-item .nav-menu li .dropdown {
-	position: absolute;
-	right: 0;
-	top: 82px;
-	width: 200px;
-	z-index: 99;
+  .nav-item .nav-menu li .dropdown {
+    position: absolute;
+    right: 0;
+    top: 82px;
+    width: 200px;
+    z-index: 99;
+    /*Thiện
 	background: #252525;
-	opacity: 0;
-	visibility: hidden;
-	-webkit-transition: all 0.3s;
-	-o-transition: all 0.3s;
-	transition: all 0.3s;
-}
+        */
+    background: #683ab7;/*Chi*/
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+  }
 
 .nav-item .nav-menu li .dropdown li {
 	display: block;
@@ -836,15 +875,18 @@ ol {
 	opacity: 0;
 }
 
-.hero-items .single-hero-items h1 {
+  .hero-items .single-hero-items h1 {
+    /*Thiện
 	color: #252525;
-	font-size: 72px;
-	font-weight: 700;
-	margin-bottom: 6px;
-	position: relative;
-	top: 50px;
-	opacity: 0;
-}
+        */
+    color: #683ab7;/*Chi*/
+    font-size: 72px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    position: relative;
+    top: 50px;
+    opacity: 0;
+  }
 
 .hero-items .single-hero-items p {
 	margin-bottom: 42px;
@@ -948,11 +990,14 @@ ol {
 }
 
 .hero-items .owl-nav button[type=button] {
-	font-size: 30px;
-	position: absolute;
-	left: 40px;
-	top: 45%;
+  font-size: 30px;
+  position: absolute;
+  left: 40px;
+  top: 45%;
+  /*Thiện
 	color: #252525;
+        */
+  color: #683ab7;/*Chi*/
 }
 
 .hero-items .owl-nav button[type=button]:hover {
@@ -1021,13 +1066,16 @@ ol {
 	height: 100%;
 }
 
-.single-banner .inner-text h4 {
+  .single-banner .inner-text h4 {
+    /*Thiện
 	color: #252525;
-	font-weight: 700;
-	padding: 11px 28px;
-	background: #ffffff;
-	border-radius: 2px;
-}
+        */
+    color: #683ab7;/*Chi*/
+    font-weight: 700;
+    padding: 11px 28px;
+    background: #ffffff;
+    border-radius: 2px;
+  }
 
 /*---------------------
   Women Banner Section

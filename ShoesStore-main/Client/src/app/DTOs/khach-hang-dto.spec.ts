@@ -1,7 +1,7 @@
-import { KhachHangDto } from './khach-hang-dto';
+import { CustomerDto } from './khach-hang-dto';
 
 describe('KhachHangDto', () => {
   it('should create an instance', () => {
-    expect(new KhachHangDto()).toBeTruthy();
+    expect(new CustomerDto()).toBeTruthy();
   });
 });

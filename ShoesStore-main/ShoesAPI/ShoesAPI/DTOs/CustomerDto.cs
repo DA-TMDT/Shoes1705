@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ShoesAPI.DTOs
 {
-    public class KhachHangDto
+    public class CustomerDto
     {
         public string user{get; set;}
         public string pass{get; set;}
@@ -15,12 +15,12 @@ namespace ShoesAPI.DTOs
         public DateTime dateborn{get; set;}
         public int status{get; set;}
 
-        public KhachHangDto()
+        public CustomerDto()
         {
             status = 1;
         }
 
-        public KhachHangDto(string user, string pass, string full_name, string phone, string mail,
+        public CustomerDto(string user, string pass, string full_name, string phone, string mail,
         string address, string sex, DateTime dateborn, int status){
             this.user = user;
             this.pass = pass;

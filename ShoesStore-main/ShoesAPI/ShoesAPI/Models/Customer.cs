@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ShoesAPI.Models
 {
-    public class KhachHang
+    public class Customer
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -20,7 +20,7 @@ namespace ShoesAPI.Models
 
         // public ICollection<HoaDon> hoadons {get; set;}
 
-        public KhachHang()
+        public Customer()
         {
             status = 1;
             // this.hoadons = new HashSet<HoaDon>();

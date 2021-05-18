@@ -5,7 +5,7 @@ namespace ShoesAPI.Models
 {
     public class IndexViewShopModel
     {
-        public PaginatedList<SanPhamDto> ListSP { get; set; }
+        public PaginatedList<ProductDto> ListSP { get; set; }
         public string Type { get; set; }
         public string NameType { get; set;}
         public string qSearch { get; set; }

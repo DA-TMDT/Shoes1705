@@ -7,8 +7,8 @@ namespace ShoesAPI.Persistence
 {
     public class QuyenEFContext : IQuyenEFContext
     {
-        private readonly PhoneStoreDBContext context;
-        public QuyenEFContext(PhoneStoreDBContext context) {
+        private readonly ShoesStoreDBContext context;
+        public QuyenEFContext(ShoesStoreDBContext context) {
             this.context = context;
         }
         public void Quyen_Add(Quyen LSP)

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { KhachHangService } from 'src/app/Services/khach-hang.service';
+import { Router } from '@angular/router';
+import { CustomerService } from 'src/app/Services/khach-hang.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -17,7 +18,7 @@ export class UserComponent implements OnInit {
   public profileUserForm;
   public profilePassForm;
 
-  constructor(private httpKH : KhachHangService) { }
+  constructor(private httpKH: CustomerService, private router: Router) { }
 
   ngOnInit(): void {
     // Load CurrentUser
@@ -369,5 +370,10 @@ export class UserComponent implements OnInit {
   public changeType(type) {
     this.type = type;
   }
-  
+  /*Dung
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['login']);
+    this.user = '';
+  }*/
 }

@@ -7,8 +7,8 @@ namespace ShoesAPI.Persistence
 {
     public class ChiTietHDEFContext : IChiTietHDEFContext
     {
-        private readonly PhoneStoreDBContext context;
-        public ChiTietHDEFContext(PhoneStoreDBContext context) {
+        private readonly ShoesStoreDBContext context;
+        public ChiTietHDEFContext(ShoesStoreDBContext context) {
             this.context = context;
         }
         public void ChiTietHD_Add(ChiTietHD CTHD)

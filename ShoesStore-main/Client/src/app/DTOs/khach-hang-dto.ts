@@ -1,4 +1,4 @@
-export class KhachHangDto {
+export class CustomerDto {
 
     constructor(
         public user,

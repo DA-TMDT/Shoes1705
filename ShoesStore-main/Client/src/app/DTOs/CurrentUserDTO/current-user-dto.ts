@@ -1,5 +1,5 @@
-import { KhachHangDto } from "../khach-hang-dto";
+import { CustomerDto } from "../khach-hang-dto";
 
 export class CurrentUserDto {
-    constructor(public KhachHangDto : KhachHangDto) {}
+    constructor(public CustomerDto : CustomerDto) {}
 }

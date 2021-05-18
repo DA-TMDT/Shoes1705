@@ -7,8 +7,8 @@ namespace ShoesAPI.Persistence
 {
     public class LoaiSanPhamEFContext : ILoaiSanPhamEFContext
     {
-        private readonly PhoneStoreDBContext context;
-        public LoaiSanPhamEFContext(PhoneStoreDBContext context) {
+        private readonly ShoesStoreDBContext context;
+        public LoaiSanPhamEFContext(ShoesStoreDBContext context) {
             this.context = context;
         }
         public void LoaiSanPham_Add(LoaiSanPham LSP)

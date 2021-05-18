@@ -6,7 +6,7 @@ namespace ShoesAPI.Persistence
 {
     public class SeedData
     {
-        public static void Initialize(PhoneStoreDBContext context) {
+        public static void Initialize(ShoesStoreDBContext context) {
             context.Database.EnsureCreated();
             bool temp = false;
             //Quyen            
@@ -98,10 +98,10 @@ namespace ShoesAPI.Persistence
             }
 
             //Khach hang
-            if (!context.KhachHangs.Any()) {
+            if (!context.Customers.Any()) {
                 temp = true;
-                context.KhachHangs.AddRange(new List<KhachHang>{
-                    new KhachHang{
+                context.Customers.AddRange(new List<Customer>{
+                    new Customer{
                         user = "thien",
                         pass = "1234",
                         full_name = "Nguyễn Ngọc Thiện",
@@ -112,7 +112,7 @@ namespace ShoesAPI.Persistence
                         dateborn = new System.DateTime(2000, 5, 8),
                         status = 1
                     },
-                    new KhachHang{
+                    new Customer{
                         user = "thinh",
                         pass = "1234",
                         full_name = "Nguyễn Phước Thịnh",
@@ -123,7 +123,7 @@ namespace ShoesAPI.Persistence
                         dateborn = new System.DateTime(2000, 5, 8),
                         status = 1
                     },
-                    new KhachHang{
+                    new Customer{
                         user = "cungthien",
                         pass = "1234",
                         full_name = "Cung Xương Hồng Thiên",
@@ -233,10 +233,10 @@ namespace ShoesAPI.Persistence
                 });  
             }
             //sản phẩm
-            if(!context.SanPhams.Any()) {
+            if(!context.Products.Any()) {
                 temp = true;
-                context.SanPhams.AddRange(new List<SanPham>{
-                    new SanPham{
+                context.Products.AddRange(new List<Product>{
+                    new Product{
                     product_id =1,
                         name="Biti's Hunter X Festive Aurora",
                         product_type_id=1,
@@ -247,7 +247,7 @@ namespace ShoesAPI.Persistence
                         size="40",
                         status=1  
                     },
-                    new SanPham{
+                    new Product{
                     product_id =2,
                         name="Biti's Hunter Core Festive Breezer",
                         product_type_id=1,
@@ -258,7 +258,7 @@ namespace ShoesAPI.Persistence
                         size="42",
                         status=1 
                     },
-                    new SanPham{
+                    new Product{
                     product_id =3,
                         name="Biti's Hunter X Army Green",
                         product_type_id=1,
@@ -269,7 +269,7 @@ namespace ShoesAPI.Persistence
                         size="40",
                         status=1  
                     },
-                    new SanPham{
+                    new Product{
                     product_id =4,
                         name="Biti's Hunter BKL Tết Edition 2020",
                         product_type_id=1,
@@ -280,7 +280,7 @@ namespace ShoesAPI.Persistence
                         size="40",
                         status=1  
                     },
-                    new SanPham{
+                    new Product{
                     product_id =5,
                         name="Biti's Hunter X 2k19 - Jet Navy",
                         product_type_id=1,
@@ -291,7 +291,7 @@ namespace ShoesAPI.Persistence
                         size="39",
                         status=1  
                     },
-                    new SanPham{
+                    new Product{
                     product_id =6,
                         name="Vietnamese Canvas of Pride",
                         product_type_id=1,
@@ -302,7 +302,7 @@ namespace ShoesAPI.Persistence
                         size="35",
                         status=1  
                     },
-                    new SanPham{
+                    new Product{
                     product_id =7,
                         name="Biti's Hunter Street x Vietmax 2020",
                         product_type_id=1,
@@ -313,7 +313,7 @@ namespace ShoesAPI.Persistence
                         size="43",
                         status=1  
                     },
-                    new SanPham{
+                    new Product{
                     product_id =8,
                         name="Biti's Hunter Street x Vietmax 2020",
                         product_type_id=1,
@@ -324,7 +324,7 @@ namespace ShoesAPI.Persistence
                         size="44",
                         status=1  
                     },
-                    new SanPham{
+                    new Product{
                     product_id =9,
                         name="Biti's Hunter Street Mid Kumquat Soda",
                         product_type_id=1,
@@ -335,7 +335,7 @@ namespace ShoesAPI.Persistence
                         size="37",
                         status=1  
                     },
-                    new SanPham{
+                    new Product{
                     product_id =10,
                         name="Biti's Hunter Street Mid Orange Milk",
                         product_type_id=1,
@@ -346,7 +346,7 @@ namespace ShoesAPI.Persistence
                         size="41",
                         status=1  
                     },
-                    new SanPham{
+                    new Product{
                     product_id =11,
                         name="Biti's Hunter Street Festive Low-Cut Slate Black",
                         product_type_id=1,
@@ -357,7 +357,7 @@ namespace ShoesAPI.Persistence
                         size="38",
                         status=1  
                     },
-                    new SanPham{
+                    new Product{
                     product_id =12,
                         name="Biti’s Hunter X - Summer 2K19",
                         product_type_id=1,
@@ -368,7 +368,7 @@ namespace ShoesAPI.Persistence
                         size="40",
                         status=1  
                     },
-                    new SanPham{
+                    new Product{
                     product_id =13,
                         name="Biti's Hunter Street Festive Low-Cut Duke",
                         product_type_id=1,
@@ -379,7 +379,7 @@ namespace ShoesAPI.Persistence
                         size="40",
                         status=1  
                     },
-                    new SanPham{
+                    new Product{
                     product_id =14,
                         name="HU NMD",
                         product_type_id=4,
@@ -387,6 +387,391 @@ namespace ShoesAPI.Persistence
                         price=6000000,
                         description=  "Giày Adidas",
                         img="sp14.jpg",
+                        size="42",
+                        status=1  
+                    },
+                    new Product{
+                    product_id =17,
+                        name="Nike Air Max 95 SE",
+                        product_type_id=2,
+                        amount=50,
+                        price=4999000,
+                        description=  "Lấy cảm hứng từ cơ thể con người và tính thẩm mỹ từ các môn thể thao thập niên 90, Nike Air Max 95 SE kết hợp sự thoải mái đến khó tin và phong cách quay đầu với một thiết kế bền vững. denim và lưới. Đồ họa nút chai thêu trên lưỡi gật đầu với loại cây được sử dụng trong thiết kế. Không khí có thể xử lý được ở gót chân và đệm bàn chân trước mỗi bước đi. ",
+                        img="sp15.jpg",
+                        size="42",
+                        status=1  
+                    },
+                    new Product{
+                    product_id =18,
+                        name="Nike Air Force 1 '07 LV8",
+                        product_type_id=2,
+                        amount=50,
+                        price=2929000,
+                        description=  "Nike Air Force 1 '07 LV8 cập nhật phiên bản gốc '82 lấy cảm hứng từ vòng đệm với ít nhất 20% nội dung tái chế theo trọng lượng và đế ngoài bằng nút chai. Với họa tiết cây lựu bao gồm màu nhuộm thực vật thật, thiết kế thêu thực vật và đồ họa thông tin khoa học, đó là một sự thay đổi tự nhiên của tác phẩm cổ điển mà chúng ta đều biết và yêu thích. ",
+                        img="sp18.jpg",
+                        size="42",
+                        status=1  
+                    },
+                    new Product{
+                    product_id =19,
+                        name="Nike Air Force 1 '07 Premium",
+                        product_type_id=2,
+                        amount=50,
+                        price=3829000,
+                        description=  "Nâng niu con vật bên trong của bạn với Nike Air Force 1 '07 Premium, quả bóng b-ball OG mang đến một sự thay đổi mới mẻ cho những gì bạn biết rõ nhất: da sắc nét, màu sắc sạch sẽ và lượng đèn flash hoàn hảo để khiến bạn tỏa sáng. và logo Swoosh mượt mà khiến chiếc AF-1 này trở thành một chuyến đi săn cho đôi chân của bạn. ",
+                        img="sp19.jpg",
+                        size="42",
+                        status=1  
+                    },
+                    new Product{
+                    product_id =20,
+                        name="Nike Air Force 1 '07 Premium",
+                        product_type_id=2,
+                        amount=50,
+                        price=3829000,
+                        description=  "Nâng niu con vật bên trong của bạn với Nike Air Force 1 '07 Premium, quả bóng b-ball OG mang đến một sự thay đổi mới mẻ cho những gì bạn biết rõ nhất: da sắc nét, màu sắc sạch sẽ và lượng đèn flash hoàn hảo để khiến bạn tỏa sáng. và logo Swoosh mượt mà khiến chiếc AF-1 này trở thành một chuyến đi săn cho đôi chân của bạn. ",
+                        img="sp20.jpg",
+                        size="42",
+                        status=1  
+                    },
+                    new Product{
+                    product_id =21,
+                        name="Nike AF 1/1",
+                        product_type_id=2,
+                        amount=50,
+                        price=4109000,
+                        description=  "Sự rạng rỡ tồn tại trong Nike AF 1/1, biểu tượng quả bóng b-ball mang đến sự xoay chuyển phù hợp với những gì bạn biết rõ nhất: da tổng hợp sắc nét, đường nét sạch sẽ và lượng đèn flash hoàn hảo để bạn tỏa sáng. Thiết kế mới, có thể tùy chỉnh có phần trên móc và vòng với các lớp phủ có thể tháo rời để bạn thay đổi diện mạo của mình cho phù hợp với ngày. ",
+                        img="sp21.jpg",
+                        size="42",
+                        status=1  
+                    },
+                    new Product{
+                    product_id =22,
+                        name="Nike Air Force 1 '07 LV8",
+                        product_type_id=2,
+                        amount=50,
+                        price=2929000,
+                        description=  "Sự rạng rỡ còn tồn tại trong Nike Air Force 1 '07, biểu tượng quả bóng b mang một góc quay biểu cảm về những gì bạn biết rõ nhất: da sắc nét, màu sắc đậm và lượng đèn flash hoàn hảo để khiến bạn tỏa sáng. Tôn vinh nghệ thuật và phong cách DIY, phần sơn bắn tung tóe phía trên mời bạn thêm vào nét nghệ thuật của riêng mình. Hoặc mặc nguyên tấm vải và quay đầu lại với thiết kế có một không hai của nó. ",
+                        img="sp22.jpg",
+                        size="42",
+                        status=1  
+                    },
+                    new Product{
+                    product_id =23,
+                        name="Zion 1 PF",
+                        product_type_id=2,
+                        amount=50,
+                        price=3529000,
+                        description=  "Với một tính cách bình thường và những khả năng vượt ra ngoài thế giới này, Zion không giống bất kỳ ai khác. dòng chữ ký với thiết kế lấy cảm hứng từ tính khiêm tốn và khả năng siêu phàm của anh ấy. Đệm Air Strobel có chiều dài hoàn chỉnh được xếp chồng lên nhau với bộ phận Zoom Air ở bàn chân trước — một sự kết hợp thú vị giữa sự thoải mái dưới chân sang trọng và khả năng phản hồi nhanh. Nhẹ, ổn định và mạnh mẽ, với lực kéo mạnh mẽ giúp Zion bám sân và kiểm soát sức mạnh của mình. Phiên bản PF này sử dụng đế ngoài siêu bền được thiết kế cho các sân ngoài trời. ",
+                        img="sp23.jpg",
+                        size="42",
+                        status=1  
+                    },
+                    new Product{
+                    product_id =24,
+                        name="Zion 1 'ZNA'",
+                        product_type_id=2,
+                        amount=50,
+                        price=3529000,
+                        description=  "Một số người gọi nó là yếu tố X, một phẩm chất bí ẩn, vô hình sống bên trong. Đó là một sức mạnh mạnh mẽ đến mức khi kết hợp với cam kết vĩ đại vô song, nó tạo ra một thứ mà thế giới chưa từng thấy. , anh ta được định sẵn để thách thức, nhưng không ai, không mô hình, không lý thuyết nào có thể dự đoán được hiện tượng Zion. thế giới có thể không bao giờ hiểu được. ",
+                        img="sp24.jpg",
+                        size="42",
+                        status=1  
+                    },
+                    new Product{
+                    product_id =25,
+                        name="Zion 1 PF",
+                        product_type_id=2,
+                        amount=50,
+                        price=3529000,
+                        description=  "Với một tính cách bình thường và những khả năng vượt ra ngoài thế giới này, Zion không giống bất kỳ ai khác. dòng chữ ký với thiết kế lấy cảm hứng từ tính khiêm tốn và khả năng siêu phàm của anh ấy. Đệm Air Strobel có chiều dài hoàn chỉnh được xếp chồng lên nhau với bộ phận Zoom Air ở bàn chân trước — một sự kết hợp thú vị giữa sự thoải mái dưới chân sang trọng và khả năng phản hồi nhanh. Nhẹ, ổn định và mạnh mẽ, với lực kéo mạnh mẽ giúp Zion bám sân và kiểm soát sức mạnh của mình. Phiên bản PF này sử dụng đế ngoài siêu bền được thiết kế cho các sân ngoài trời. ",
+                        img="sp25.jpg",
+                        size="42",
+                        status=1  
+                    },
+                    new Product{
+                    product_id =27,
+                        name="Nike Air Zoom Pegasus 38",
+                        product_type_id=2,
+                        amount=50,
+                        price=3519000,
+                        description=  "Nike Air Zoom Pegasus 38 tiếp tục tạo ra một lò xo trong bước đi của bạn, sử dụng bọt phản ứng tương tự như người tiền nhiệm của nó. ",
+                        img="sp27.jpg",
+                        size="42",
+                        status=1  
+                    },
+                    new Product{
+                    product_id =28,
+                        name="Nike Air Zoom Pegasus 38",
+                        product_type_id=2,
+                        amount=50,
+                        price=3519000,
+                        description=  "Nike Air Zoom Pegasus 38 tiếp tục tạo ra một lò xo trong bước đi của bạn, sử dụng bọt phản ứng tương tự như người tiền nhiệm của nó. ",
+                        img="sp28.jpg",
+                        size="42",
+                        status=1  
+                    },
+                    new Product{
+                    product_id =29,
+                        name="Nike Air Zoom Pegasus 38",
+                        product_type_id=2,
+                        amount=50,
+                        price=3519000,
+                        description=  "Nike Air Zoom Pegasus 38 tiếp tục tạo ra một lò xo trong bước đi của bạn, sử dụng bọt phản ứng tương tự như người tiền nhiệm của nó. ",
+                        img="sp29.jpg",
+                        size="42",
+                        status=1  
+                    },
+                    new Product{
+                    product_id =30,
+                        name="Nike Air Zoom Pegasus 38",
+                        product_type_id=2,
+                        amount=50,
+                        price=3519000,
+                        description=  "Nike Air Zoom Pegasus 38 tiếp tục tạo ra một lò xo trong bước đi của bạn, sử dụng bọt phản ứng tương tự như người tiền nhiệm của nó. ",
+                        img="sp30.jpg",
+                        size="42",
+                        status=1  
+                    },
+                    new Product{
+                    product_id =31,
+                        name="Nike Air Force 1 '07 Craft",
+                        product_type_id=2,
+                        amount=50,
+                        price=3829000,
+                        description=  "Sự rạng rỡ còn tồn tại trong Nike Air Force 1 '07 Craft, biểu tượng quả bóng b mang lại sự tươi mới cho những gì bạn biết rõ nhất: lớp phủ được khâu, màu sắc đậm và lượng đèn flash hoàn hảo để khiến bạn tỏa sáng. ",
+                        img="sp31.jpg",
+                        size="42",
+                        status=1  
+                    },
+                    new Product{
+                    product_id =32,
+                        name="Nike Air Force 1 '07 Craft",
+                        product_type_id=2,
+                        amount=50,
+                        price=3829000,
+                        description=  "Sự rạng rỡ còn tồn tại trong Nike Air Force 1 '07 Craft, biểu tượng quả bóng b mang lại sự tươi mới cho những gì bạn biết rõ nhất: lớp phủ được khâu, màu sắc đậm và lượng đèn flash hoàn hảo để khiến bạn tỏa sáng. ",
+                        img="sp32.jpg",
+                        size="42",
+                        status=1  
+                    },
+                    new Product{
+                    product_id =33,
+                        name="VANS OLD SKOOL CLASSIC BLACK/WHITE",
+                        product_type_id=3,
+                        amount=50,
+                        price=1499000,
+                        description=  "VANS OLD SKOOL CLASSIC BLACK/WHITE Là một trong những phiên bản đầu tiên và cổ điển nhất của VANS trong bộ sưu tập VANS OLD SKOOL ra đời năm 1977. Tới nay đôi giày chỉ với phối màu đen trắng này vẫn nằm trong top Best Seller của VANS trên toàn thế giới, với kiểu dáng cổ điển cùng sọc Jazz huyền thoại hợp thời trang khiến đôi VANS này thật sự trở thành mẫu giày classic bất bại, là fan hâm mộ của VANS nói chung và những skaters nói riêng đều nên có một đôi trong tủ giày. Được mệnh danh là phiên bản mang càng cũ càng đẹp và nhiều phiên bản custom  bậc nhất của nhà VANS. ",
+                        img="sp33.jpg",
+                        size="42",
+                        status=1  
+                    },
+                    new Product{
+                    product_id =34,
+                        name="VANS CHECKERBOARD SLIP-ON CLASSIC BLACK/WHITE - VANS VIỆT NAM",
+                        product_type_id=3,
+                        amount=50,
+                        price=1450000,
+                        description=  "VANS CHECKERBOARD SLIP-ON CLASSIC BLACK/WHITE - VANS VIỆT NAM ",
+                        img="sp34.jpg",
+                        size="42",
+                        status=1  
+                    },
+                    new Product{
+                    product_id =35,
+                        name="VANS CLASSIC SLIP-ON TRUE WHITE",
+                        product_type_id=3,
+                        amount=50,
+                        price=1450000,
+                        description=  "Là phiên bản trắng tinh True White nằm trong mục Best Seller của VANS và nằm trong bộ 3 True White mang lại lợi nhuận khổng lồ cho hãng. Được các họa sĩ Custom lựa chọn để cho ra những tác phẩm độc đáo vì chất liệu vải bố, đồng thời toàn đôi giày đều có thể vẽ lên bất cứ đâu. ",
+                        img="sp35.jpg",
+                        size="42",
+                        status=1  
+                    },
+                    new Product{
+                    product_id =36,
+                        name="VANS CLASSIC OLD SKOOL NAVY/WHITE",
+                        product_type_id=3,
+                        amount=50,
+                        price=1750000,
+                        description=  "VANS CLASSIC OLD SKOOL NAVY/WHITE ",
+                        img="sp36.jpg",
+                        size="42",
+                        status=1  
+                    },
+                    new Product{
+                    product_id =37,
+                        name="VANS FLAME SK8-HI REISSUE",
+                        product_type_id=3,
+                        amount=50,
+                        price=1900000,
+                        description=  "VANS FLAME SK8-HI REISSUE ",
+                        img="sp37.jpg",
+                        size="42",
+                        status=1  
+                    },
+                    new Product{
+                    product_id =38,
+                        name="VANS CLASSIC SK8-HI NAVY/WHITE",
+                        product_type_id=3,
+                        amount=50,
+                        price=1850000,
+                        description=  "VANS CLASSIC SK8-HI NAVY/WHITE ",
+                        img="sp38.jpg",
+                        size="42",
+                        status=1  
+                    },
+                    new Product{
+                    product_id =39,
+                        name="VANS CLASSIC AUTHENTIC BLACK/WHITE",
+                        product_type_id=3,
+                        amount=50,
+                        price=1450000,
+                        description=  "VANS CLASSIC AUTHENTIC BLACK/WHITE ",
+                        img="sp39.jpg",
+                        size="42",
+                        status=1  
+                    },
+                    new Product{
+                    product_id =40,
+                        name="VANS CLASSIC AUTHENTIC TRUE WHITE",
+                        product_type_id=3,
+                        amount=50,
+                        price=1450000,
+                        description=  "VANS CLASSIC AUTHENTIC TRUE WHITE ",
+                        img="sp40.jpg",
+                        size="42",
+                        status=1  
+                    },
+                    new Product{
+                    product_id =41,
+                        name="GIÀY OZWEEGO Cream White / Core Black / Screaming Orange",
+                        product_type_id=4,
+                        amount=50,
+                        price=3100000,
+                        description=  "Khi ngày mới kín đặc lịch trình, bạn không muốn phải bận tâm thêm bất kỳ điều gì nữa. Bạn cần sự thoải mái. Hãy để đôi giày adidas OZWEEGO này ra tay bằng cách giúp bạn khỏi lo hôm nay mặc gì. Tận hưởng cảm giác thoải mái ngay từ giây phút bạn bước ra khỏi cửa tới tận khi về nhà. Lớp đệm Adiprene và EVA giúp mỗi bước đi luôn dễ chịu. Với đôi giày này, không gì có thể cản bước bạn. ",
+                        img="sp41.jpg",
+                        size="42",
+                        status=1  
+                    },
+                    new Product{
+                    product_id =42,
+                        name="GIÀY STAN SMITH Core White / Core White / Dark Blue",
+                        product_type_id=4,
+                        amount=50,
+                        price=1150000,
+                        description=  "GIÀY STAN SMITH Core White / Core White / Dark Blue ",
+                        img="sp42.jpg",
+                        size="42",
+                        status=1  
+                    },   
+                    new Product{
+                    product_id =43,
+                        name="SLIPON PURE HM",
+                        product_type_id=4,
+                        amount=50,
+                        price=4000000,
+                        description=  "SLIPON PURE HM ",
+                        img="sp43.jpg",
+                        size="42",
+                        status=1  
+                    },   
+                    new Product{
+                    product_id =44,
+                        name="SLIPON PURE HM White / Core White / Dark Blue",
+                        product_type_id=4,
+                        amount=50,
+                        price=4000000,
+                        description=  "SLIPON PURE HM White / Core White / Dark Blue ",
+                        img="sp42.jpg",
+                        size="42",
+                        status=1  
+                    },   
+                    new Product{
+                    product_id =45,
+                        name="SLIPON PURE HM White / Core White / Dark Blue",
+                        product_type_id=4,
+                        amount=50,
+                        price=4000000,
+                        description=  "SLIPON PURE HM White / Core White / Dark Blue ",
+                        img="sp45.jpg",
+                        size="42",
+                        status=1  
+                    },   
+                    new Product{
+                    product_id =46,
+                        name="SLIPON PURE HM White / Core White / Dark Blue",
+                        product_type_id=4,
+                        amount=50,
+                        price=4000000,
+                        description=  "GIÀY STAN SMITH Core White / Core White / Dark Blue ",
+                        img="sp46.jpg",
+                        size="42",
+                        status=1  
+                    },   
+                    new Product{
+                    product_id =47,
+                        name="SLIPON PURE HM White / Core White / Dark Blue",
+                        product_type_id=4,
+                        amount=50,
+                        price=4000000,
+                        description=  "GIÀY STAN SMITH Core White / Core White / Dark Blue ",
+                        img="sp47.jpg",
+                        size="42",
+                        status=1  
+                    },
+                    new Product{
+                    product_id =48,
+                        name="SLIPON PURE HM White / Core White / Dark Blue",
+                        product_type_id=4,
+                        amount=50,
+                        price=3980000,
+                        description=  "GIÀY STAN SMITH Core White / Core White / Dark Blue ",
+                        img="sp48.jpg",
+                        size="42",
+                        status=1  
+                    },   
+                    new Product{
+                    product_id =49,
+                        name="SLIPON PURE HM White / Core White / Dark Blue",
+                        product_type_id=4,
+                        amount=50,
+                        price=3990000,
+                        description=  "GIÀY STAN SMITH Core White / Core White / Dark Blue ",
+                        img="sp49.jpg",
+                        size="42",
+                        status=1  
+                    },   
+                    new Product{
+                    product_id =50,
+                        name="SLIPON PURE HM White / Core White / Dark Blue",
+                        product_type_id=4,
+                        amount=50,
+                        price=3990000,
+                        description=  "GIÀY STAN SMITH Core White / Core White / Dark Blue ",
+                        img="sp50.jpg",
+                        size="42",
+                        status=1  
+                    },   
+                    new Product{
+                    product_id =51,
+                        name="SLIPON PURE HM White / Core White / Dark Blue",
+                        product_type_id=4,
+                        amount=50,
+                        price=3990000,
+                        description=  "GIÀY STAN SMITH Core White / Core White / Dark Blue ",
+                        img="s51.jpg",
+                        size="42",
+                        status=1  
+                    },   
+                    new Product{
+                    product_id =52,
+                        name="SLIPON PURE HM White / Core White / Dark Blue",
+                        product_type_id=4,
+                        amount=50,
+                        price=3980000,
+                        description=  "GIÀY STAN SMITH Core White / Core White / Dark Blue ",
+                        img="sp52.jpg",
                         size="42",
                         status=1  
                     }

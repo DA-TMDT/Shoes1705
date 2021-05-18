@@ -7,8 +7,8 @@ namespace ShoesAPI.Persistence
 {
     public class HoaDonEFContext : IHoaDonEFContext
     {
-        private readonly PhoneStoreDBContext context;
-        public HoaDonEFContext(PhoneStoreDBContext context) {
+        private readonly ShoesStoreDBContext context;
+        public HoaDonEFContext(ShoesStoreDBContext context) {
             this.context = context;
         }
         public void HoaDon_Add(HoaDon HD)

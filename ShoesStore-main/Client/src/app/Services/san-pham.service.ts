@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class SanPhamService {
-  url = `${environment.apiUrl}sanpham/`;
+  url = `${environment.apiUrl}product/`;
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { KhachHangService } from 'src/app/Services/khach-hang.service';
+import { CustomerService } from 'src/app/Services/khach-hang.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit {
     ])),
     status : new FormControl('1')
   });
-  constructor(private registerHttp : KhachHangService) { }
+  constructor(private registerHttp : CustomerService) { }
 
   ngOnInit(): void {
   }

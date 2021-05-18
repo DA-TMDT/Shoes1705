@@ -1,71 +1,40 @@
 <!-- Page Preloder -->
-<div id="preloder">
+<!-- <div id="preloder">
     <div class="loader"></div>
-</div>
+</div> -->
 
 <!-- Header Section Begin -->
 <header class="header-section">
-    <!--Thien
-    <div class="header-top">
-        <div class="container">
-            <div class="ht-left">
-                <div class="mail-service">
-                    <i class=" fa fa-envelope"></i>
-                    tructruong.070202@gmail.com
-                </div>
-                <div class="phone-service">
-                    <i class=" fa fa-phone"></i>
-                    0364117408
-                </div>
-            </div>
-            <div class="ht-right">
-                <span *ngIf="CurrentUser; then CurrentUser_condition1; else CurrentUser_condition2"></span>
-                <ng-template #CurrentUser_condition1>
-                    <a [routerLink]="['/user']" [routerLinkActive]="'active-link'" class="login-panel"><i class="fa fa-user"></i>{{ CurrentUser.full_name }}</a>
-                </ng-template>
-                <ng-template #CurrentUser_condition2>
-                    <a [routerLink]="['/login']" [routerLinkActive]="'active-link'" class="login-panel"><i class="fa fa-user"></i>Đăng nhập</a>
-                </ng-template>
-                <div class="top-social">
-                    <a href="#"><i class="ti-facebook"></i></a>
-                    <a href="#"><i class="ti-twitter-alt"></i></a>
-                    <a href="#"><i class="ti-linkedin"></i></a>
-                    <a href="#"><i class="ti-pinterest"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    end Thien-->
     <div class="container">
         <div class="inner-header">
             <div class="row">
                 <div class="col-lg-2 col-md-2">
                     <div class="logo">
-                        <a [routerLink]="['/shop']" [routerLinkActive]="'active-link'">
+                        <a [routerLink]="['/home']" [routerLinkActive]="'active-link'">
                             <img src="assets/img/logo.png" alt="">
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-7 col-md-7">
+                <div class="col-lg-6 col-md-6">
                     <div class="advanced-search">
-                        <!-- @* <button type="button" class="category-btn">All Categories</button> *@
-                        @* <div > *@ -->
                         <form (submit)="qSearch_Submit()" class="input-group">
                             <input type="text" [(ngModel)]="qSearch" name="qSearch" placeholder="Nhập sản phẩm tìm kiếm">
                             <button type="submit"><i class="ti-search"></i></button>
                         </form>
-
-                        <!-- @* </div> *@ -->
                     </div>
                 </div>
                 <!--Dung-->
-                <div class="col-lg-2 text-right col-md-2">
+                <div class="col-lg-3 text-right col-md-3">
                     <ul class="nav-right">
-                        <li class="cart-icon">
-                            <a [routerLink]="['/user']" [routerLinkActive]="'active-link'">
-                                <i class="icon_profile"></i>
-                            </a>
-                        </li>
+                      <li class="cart-icon">
+                        <span *ngIf="CurrentUser; then CurrentUser_condition1; else CurrentUser_condition2"></span>
+                        <ng-template #CurrentUser_condition1>
+                            <a [routerLink]="['/user']" [routerLinkActive]="'active-link'" class="login-panel"><i class="fa fa-user"></i>{{ CurrentUser.full_name }}</a>
+                        </ng-template>
+                        <ng-template #CurrentUser_condition2>
+                            <a [routerLink]="['/login']" [routerLinkActive]="'active-link'" class="login-panel"><i class="fa fa-user"></i>Đăng nhập</a>
+                        </ng-template>                                             
+                      </li>
                     </ul>
                 </div>
                 <!--end Dung-->
@@ -99,11 +68,6 @@
                                 </div>
                                 <div class="select-total" id="loadtotalcartlayout">
                                     <span>Tổng:</span>
-                                    <!-- @* @{
-                                            if(ViewBag.DonHang != null){
-                                                <h5>@ViewBag.DonHang.totalprice đ</h5>
-                                            }
-                                        } *@ -->
                                       <h5>{{totalCart}} đ</h5>
                                 </div>
                                 <div class="select-button">
@@ -171,36 +135,6 @@
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.6688952901823!2d106.67992501410507!3d10.759981062440971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f1b7c3ed289%3A0xa06651894598e488!2sSaigon%20University!5e0!3m2!1sen!2s!4v1621242733703!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
-            <!--Thien
-            <div class="col-lg-2 offset-lg-1">
-                <div class="footer-widget">
-                    <h5>Cửa hàng</h5>
-                    <ul>
-                        <li><a href="https://goo.gl/maps/FS5CFkaVehbDcrai7">Cửa hàng</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="footer-widget">
-                    <h5>Tài khoản</h5>
-                    <ul>
-                        <li><a href="/User/Index">Tài khoản của tôi</a></li>
-                        <li><a href="/User/Detail">Thông tin cá nhân</a></li>
-                        <li><a href="/User/MyOrder">Đơn hàng</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="newslatter-item">
-                    <h5>Tham gia bản tin của chúng tôi ngay bây giờ</h5>
-                    <p>Nhận thông tin cập nhật qua E-mail về cửa hàng mới nhất của chúng tôi và các ưu đãi đặc biệt.</p>
-                    <form action="#" class="subscribe-form">
-                        <input type="text" placeholder="Nhập Email">
-                        <button type="button">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-        end Thien-->
         </div>
     </div>
     

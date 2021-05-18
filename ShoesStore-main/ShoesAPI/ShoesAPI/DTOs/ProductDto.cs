@@ -1,6 +1,6 @@
 namespace ShoesAPI.DTOs
 {
-    public class SanPhamDto
+    public class ProductDto
     {
         public int product_id{get; set;}
         public int product_type_id {get; set;}
@@ -11,7 +11,7 @@ namespace ShoesAPI.DTOs
         public string img {get; set;}
         public string size {get; set;}
         public int status {get; set;}
-        public SanPhamDto(){
+        public ProductDto(){
             amount = 0;
             status = 1;
         }
